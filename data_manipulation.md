@@ -504,3 +504,27 @@ mutate(
     ## 10 con8  #3/5/2/2/95           28.5        NA            20               8
     ## # ... with 39 more rows, and 3 more variables: pups_dead_birth <dbl>,
     ## #   pups_survive <dbl>, weight_chage <dbl>
+
+## `arrange`
+
+Let’s rearrange the data.
+
+``` r
+arrange(litters_df, gd_of_birth, gd0_weight)
+```
+
+    ## # A tibble: 49 x 8
+    ##    group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##    <chr> <chr>              <dbl>       <dbl>       <dbl>           <dbl>
+    ##  1 Mod7  #59                 17          33.4          19               8
+    ##  2 Mod7  #62                 19.5        35.9          19               7
+    ##  3 Mod7  #103                21.4        42.1          19               9
+    ##  4 Mod7  #5/3/83/5-2         22.6        37            19               5
+    ##  5 Mod7  #4/2/95/2           23.5        NA            19               9
+    ##  6 Low7  #112                23.9        40.5          19               6
+    ##  7 Mod7  #94/2               24.4        42.9          19               7
+    ##  8 Low8  #79                 25.4        43.8          19               8
+    ##  9 Con7  #5/5/3/83/3-3       26          41.4          19               6
+    ## 10 Con7  #1/2/95/2           27          42            19               8
+    ## # ... with 39 more rows, and 2 more variables: pups_dead_birth <dbl>,
+    ## #   pups_survive <dbl>
