@@ -439,6 +439,26 @@ filter(litters_df, group == "Con7" | gd_of_birth == 20)
     ## #   pups_survive <dbl>
 
 ``` r
+drop_na(litters_df)
+```
+
+    ## # A tibble: 31 x 8
+    ##    group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##    <chr> <chr>              <dbl>       <dbl>       <dbl>           <dbl>
+    ##  1 Con7  #85                 19.7        34.7          20               3
+    ##  2 Con7  #1/2/95/2           27          42            19               8
+    ##  3 Con7  #5/5/3/83/3-3       26          41.4          19               6
+    ##  4 Con7  #5/4/2/95/2         28.5        44.1          19               5
+    ##  5 Mod7  #59                 17          33.4          19               8
+    ##  6 Mod7  #103                21.4        42.1          19               9
+    ##  7 Mod7  #3/82/3-2           28          45.9          20               5
+    ##  8 Mod7  #5/3/83/5-2         22.6        37            19               5
+    ##  9 Mod7  #106                21.7        37.8          20               5
+    ## 10 Mod7  #94/2               24.4        42.9          19               7
+    ## # ... with 21 more rows, and 2 more variables: pups_dead_birth <dbl>,
+    ## #   pups_survive <dbl>
+
+``` r
 drop_na(litters_df, gd0_weight)
 ```
 
@@ -457,3 +477,30 @@ drop_na(litters_df, gd0_weight)
     ## 10 Mod7  #4/2/95/2           23.5        NA            19               9
     ## # ... with 24 more rows, and 2 more variables: pups_dead_birth <dbl>,
     ## #   pups_survive <dbl>
+
+## `mutate`
+
+Let’s add or change columns!
+
+``` r
+mutate(
+  litters_df, 
+  weight_chage = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
+
+    ## # A tibble: 49 x 9
+    ##    group litter_number   gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##    <chr> <chr>                <dbl>       <dbl>       <dbl>           <dbl>
+    ##  1 con7  #85                   19.7        34.7          20               3
+    ##  2 con7  #1/2/95/2             27          42            19               8
+    ##  3 con7  #5/5/3/83/3-3         26          41.4          19               6
+    ##  4 con7  #5/4/2/95/2           28.5        44.1          19               5
+    ##  5 con7  #4/2/95/3-3           NA          NA            20               6
+    ##  6 con7  #2/2/95/3-2           NA          NA            20               6
+    ##  7 con7  #1/5/3/83/3-3/2       NA          NA            20               9
+    ##  8 con8  #3/83/3-3             NA          NA            20               9
+    ##  9 con8  #2/95/3               NA          NA            20               8
+    ## 10 con8  #3/5/2/2/95           28.5        NA            20               8
+    ## # ... with 39 more rows, and 3 more variables: pups_dead_birth <dbl>,
+    ## #   pups_survive <dbl>, weight_chage <dbl>
